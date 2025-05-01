@@ -2,6 +2,7 @@
 using System.Text.Json;
 using ClubeDaLeitura.ConsoleApp.Util;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
@@ -9,7 +10,8 @@ public class ContextoDados
 {
     // Listas
     public List<Medicamento> Medicamentos { get; set; }
-
+    public List<Paciente> Pacientes { get; set; }
+    
     private string pastaRaiz = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "AcademiaProgramador2025");
     private string arquivoArmazenamento = "dados.json";
@@ -19,6 +21,7 @@ public class ContextoDados
     {
         // Criar Listas
         Medicamentos = new List<Medicamento>();
+        Pacientes = new List<Paciente>();
     }
 
     public ContextoDados(bool carregarDados) : this()
