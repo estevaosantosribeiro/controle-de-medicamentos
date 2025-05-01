@@ -1,6 +1,7 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 
 namespace ControleDeMedicamentos.ConsoleApp.Util;
@@ -34,6 +35,7 @@ public class TelaPrincipal
         Console.WriteLine("---------------------------------");
         Console.WriteLine();
 
+        Console.WriteLine("1- Controle de Fornecedores");
         Console.WriteLine("2 - Controle de Pacientes");
         Console.WriteLine("3 - Controle de Medicamentos");
         Console.WriteLine("4 - Controle de Funcionários");
@@ -47,14 +49,15 @@ public class TelaPrincipal
     public ITelaCrud ObterTela()
     {
         // If else para telas
-        if (OpcaoPrincipal == "2")
-            return new TelaPaciente(repositorioPaciente);
+
+        if (OpcaoPrincipal == "1")
+            return telafornecedor;
+
+     if (OpcaoPrincipal == "2")
+            return telaPaciente;
 
         else if (OpcaoPrincipal == "3")
             return new TelaMedicamento(repositorioMedicamento);
-
-        else if (OpcaoPrincipal == "4")
-            return new TelaFuncionario(repositorioFuncionario);
 
         return null;
     }

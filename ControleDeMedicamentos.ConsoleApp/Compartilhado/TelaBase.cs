@@ -100,6 +100,7 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
         bool idValido;
         do
         {
+            Console.WriteLine();
             Console.Write("Selecione o ID do registro que deseja editar: ");
             idValido = int.TryParse(Console.ReadLine(), out idRegistro);
 
@@ -158,6 +159,7 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
         bool idValido;
         do
         {
+            Console.WriteLine();
             Console.Write("Selecione o ID do registro que deseja exlcuir: ");
             idValido = int.TryParse(Console.ReadLine(), out idRegistro);
 

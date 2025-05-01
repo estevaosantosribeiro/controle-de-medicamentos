@@ -2,6 +2,7 @@
 using System.Text.Json;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 
 namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
@@ -11,6 +12,9 @@ public class ContextoDados
     // Listas
     public List<Medicamento> Medicamentos { get; set; }
     public List<Paciente> Pacientes { get; set; }
+
+    public List<Fornecedor> Fornecedor { get; set; }
+    
     public List<Funcionario> Funcionarios { get; set; }
 
     private string pastaRaiz = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
@@ -77,5 +81,6 @@ public class ContextoDados
         Pacientes = contextoArmazenado.Pacientes;
         Medicamentos = contextoArmazenado.Medicamentos;
         Funcionarios = contextoArmazenado.Funcionarios;
+        Fornecedor = contextoArmazenado.Fornecedor
     }
 }

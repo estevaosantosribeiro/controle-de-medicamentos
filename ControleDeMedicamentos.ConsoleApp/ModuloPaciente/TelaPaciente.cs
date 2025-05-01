@@ -8,14 +8,20 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
     {
     }
 
-    public override void ExibirConteudoTabela(Paciente registro)
-    {
-        throw new NotImplementedException();
-    }
-
     public override void ExibirTabela()
     {
-        throw new NotImplementedException();
+        Console.WriteLine(
+            "{0, -6} | {1, -20} | {2, -20} | {3, -30}",
+            "Id", "Nome", "Telefone", "Cartão do SUS"
+        );
+    }
+
+    public override void ExibirConteudoTabela(Paciente registro)
+    {
+        Console.WriteLine(
+            "{0, -6} | {1, -20} | {2, -20} | {3, -30}",
+            registro.Id, registro.Nome, registro.Telefone, registro.CartaoSUS
+        );
     }
 
     public override Paciente ObterDados(bool validacaoExtra)
