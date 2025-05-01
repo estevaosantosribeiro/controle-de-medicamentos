@@ -81,6 +81,6 @@ public class ContextoDados
         Pacientes = contextoArmazenado.Pacientes;
         Medicamentos = contextoArmazenado.Medicamentos;
         Funcionarios = contextoArmazenado.Funcionarios;
-        Fornecedor = contextoArmazenado.Fornecedor
+        Fornecedor = contextoArmazenado.Fornecedor;
     }
 }
