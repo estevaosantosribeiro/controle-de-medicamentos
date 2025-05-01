@@ -1,4 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
 
 namespace ClubeDaLeitura.ConsoleApp.Util;
@@ -8,6 +9,7 @@ public class TelaPrincipal
     //Repositorios
 
     private ContextoDados contexto;
+    private TelaPaciente telaPaciente;
     
     public string OpcaoPrincipal { get; private set; }
 
@@ -15,6 +17,9 @@ public class TelaPrincipal
     {
         contexto = new ContextoDados(true);
         //Criar repositorios
+
+        IRepositorioPaciente repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
+        telaPaciente = new TelaPaciente(repositorioPaciente);
     }
 
 
@@ -26,6 +31,7 @@ public class TelaPrincipal
         Console.WriteLine("---------------------------------");
         Console.WriteLine();
 
+        Console.WriteLine("2 - Controle de Pacientes");
 
         Console.WriteLine("S - Sair do Programa");
         Console.WriteLine();
@@ -37,6 +43,8 @@ public class TelaPrincipal
     public ITelaCrud ObterTela()
     {
         // If else para telas
+        if (OpcaoPrincipal == "2")
+            return telaPaciente;
 
         return null;
     }
