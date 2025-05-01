@@ -1,5 +1,4 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+﻿using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 
@@ -24,7 +23,7 @@ public class TelaPrincipal
         //Criar repositorios
         repositorioMedicamento = new RepositorioMedicamento(contexto);
 
-        IRepositorioPaciente repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
+        IRepositorioPaciente repositorioPaciente = new RepositorioPaciente(contexto);
         telaPaciente = new TelaPaciente(repositorioPaciente);
 
         IRepositorioFornecedor repositoriofornecedor = new RepositorioFornecedor(contexto);

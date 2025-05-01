@@ -1,4 +1,4 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 

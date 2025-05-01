@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.RegularExpressions;
-using ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using System.Text.RegularExpressions;
+using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
@@ -39,7 +38,7 @@ public class Paciente : EntidadeBase<Paciente>
             erros += "O campo 'Nome' deve conter entre 3 e 100 caracteres.\n";
 
         if (!Regex.IsMatch(Telefone, @"^\(?\d{2}\)?\s?(9\d{4}|\d{4})-?\d{4}$"))
-            erros += "O campo 'Telefone' é deve seguir o padrão () 0000-0000 ou (DDD) 00000-0000.\n";
+            erros += "O campo 'Telefone' é deve seguir o padrão (00) 0000-0000 ou (00) 00000-0000.\n";
 
         if (!Regex.IsMatch(CartaoSUS, @"^\d{15}$"))
             erros += "O campo 'Cartão do SUS' é precisa conter 15 números.\n";
