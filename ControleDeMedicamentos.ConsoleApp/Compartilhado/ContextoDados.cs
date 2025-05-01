@@ -1,20 +1,24 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 using ClubeDaLeitura.ConsoleApp.Util;
+using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
 public class ContextoDados
 {
     // Listas
+    public List<Medicamento> Medicamentos { get; set; }
 
     private string pastaRaiz = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "AcademiaProgramador2025");
     private string arquivoArmazenamento = "dados.json";
+    private string pastaPrincipal = "ControleDeMedicamentos";
 
     public ContextoDados()
     {
         // Criar Listas
+        Medicamentos = new List<Medicamento>();
     }
 
     public ContextoDados(bool carregarDados) : this()
@@ -28,7 +32,7 @@ public class ContextoDados
         if (!Directory.Exists(pastaRaiz))
             Directory.CreateDirectory(pastaRaiz);
 
-        string pastaProjeto = Path.Combine(pastaRaiz, "ClubeDaLeitura");
+        string pastaProjeto = Path.Combine(pastaRaiz, pastaPrincipal);
 
         if (!Directory.Exists(pastaProjeto))
             Directory.CreateDirectory(pastaProjeto);
@@ -46,7 +50,7 @@ public class ContextoDados
 
     public void Carregar()
     {
-        string pastaProjeto = Path.Combine(pastaRaiz, "ClubeDaLeitura");
+        string pastaProjeto = Path.Combine(pastaRaiz, pastaPrincipal);
 
         string caminhoCompleto = Path.Combine(pastaProjeto, arquivoArmazenamento);
 
@@ -63,5 +67,6 @@ public class ContextoDados
 
         if (contextoArmazenado == null) return;
         // Carregar listas
+        Medicamentos = contextoArmazenado.Medicamentos;
     }
 }

@@ -197,7 +197,30 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
     }
 
 
-    public abstract void VisualizarRegistros(bool exibirTitulo);
+    public void VisualizarRegistros(bool exibirTitulo)
+    {
+        if (exibirTitulo)
+        {
+            ExibirCabecalho();
+
+            Console.WriteLine("Visualizando Amigos...");
+            Console.WriteLine("---------------------------------");
+        }
+
+        ExibirTabela();
+
+        List<T> registros = repositorio.SelecionarRegistros();
+
+
+        foreach (var registro in registros)
+            ExibirConteudoTabela(registro);
+
+        if (exibirTitulo) Console.ReadLine();
+    }
+
+    public abstract void ExibirTabela();
+
+    public abstract void ExibirConteudoTabela(T registro);
 
     public abstract T ObterDados(bool validacaoExtra);
 
