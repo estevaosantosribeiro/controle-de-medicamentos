@@ -9,7 +9,7 @@ public class ContextoDados
 {
     // Listas
     public List<Medicamento> Medicamentos { get; set; }
-    public List<Paciente> Pacientes { get; set; }
+    public List<Paciente> Pacientes { get; set; } 
     
     private string pastaRaiz = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "AcademiaProgramador2025");
