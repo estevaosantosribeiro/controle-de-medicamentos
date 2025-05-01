@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 using ClubeDaLeitura.ConsoleApp.Util;
+using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
@@ -11,10 +12,12 @@ public class ContextoDados
     private string pastaRaiz = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "AcademiaProgramador2025");
     private string arquivoArmazenamento = "dados.json";
+    public List<Paciente> Pacientes { get; set; }
 
     public ContextoDados()
     {
         // Criar Listas
+        Pacientes = new List<Paciente>();
     }
 
     public ContextoDados(bool carregarDados) : this()
