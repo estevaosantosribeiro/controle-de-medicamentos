@@ -8,22 +8,21 @@ namespace ControleDeMedicamentos.ConsoleApp.Util;
 
 public class TelaPrincipal
 {
-    //Repositorios
-
     private ContextoDados contexto;
     private RepositorioMedicamento repositorioMedicamento;
     private RepositorioPaciente repositorioPaciente;
     private RepositorioFuncionario repositorioFuncionario;
-    
+    private RepositorioFornecedor repositorioFornecedor;
+
     public string OpcaoPrincipal { get; private set; }
 
     public TelaPrincipal()
     {
         contexto = new ContextoDados(true);
-        //Criar repositorios
         repositorioMedicamento = new RepositorioMedicamento(contexto);
         repositorioPaciente = new RepositorioPaciente(contexto);
         repositorioFuncionario = new RepositorioFuncionario(contexto);
+        repositorioFornecedor = new RepositorioFornecedor(contexto);
     }
 
 
@@ -48,16 +47,17 @@ public class TelaPrincipal
 
     public ITelaCrud ObterTela()
     {
-        // If else para telas
-
         if (OpcaoPrincipal == "1")
-            return telafornecedor;
+            return new TelaFornecedor(repositorioFornecedor);
 
-     if (OpcaoPrincipal == "2")
-            return telaPaciente;
+        else if (OpcaoPrincipal == "2")
+            return new TelaPaciente(repositorioPaciente);
 
         else if (OpcaoPrincipal == "3")
             return new TelaMedicamento(repositorioMedicamento);
+
+        else if (OpcaoPrincipal == "4")
+            return new TelaFuncionario(repositorioFuncionario);
 
         return null;
     }
