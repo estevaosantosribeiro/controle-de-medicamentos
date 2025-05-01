@@ -1,9 +1,9 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 
-
-namespace ClubeDaLeitura.ConsoleApp.Util;
+namespace ControleDeMedicamentos.ConsoleApp.Util;
 
 public class TelaPrincipal
 {
@@ -11,8 +11,8 @@ public class TelaPrincipal
 
     private ContextoDados contexto;
     private RepositorioMedicamento repositorioMedicamento;
-
-    private TelaPaciente telaPaciente;
+    private RepositorioPaciente repositorioPaciente;
+    private RepositorioFuncionario repositorioFuncionario;
     
     public string OpcaoPrincipal { get; private set; }
 
@@ -21,9 +21,8 @@ public class TelaPrincipal
         contexto = new ContextoDados(true);
         //Criar repositorios
         repositorioMedicamento = new RepositorioMedicamento(contexto);
-
-        IRepositorioPaciente repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
-        telaPaciente = new TelaPaciente(repositorioPaciente);
+        repositorioPaciente = new RepositorioPaciente(contexto);
+        repositorioFuncionario = new RepositorioFuncionario(contexto);
     }
 
 
@@ -36,8 +35,8 @@ public class TelaPrincipal
         Console.WriteLine();
 
         Console.WriteLine("2 - Controle de Pacientes");
-
-        Console.WriteLine("3 - Medicamentos");
+        Console.WriteLine("3 - Controle de Medicamentos");
+        Console.WriteLine("4 - Controle de Funcionários");
         Console.WriteLine("S - Sair do Programa");
         Console.WriteLine();
 
@@ -49,9 +48,13 @@ public class TelaPrincipal
     {
         // If else para telas
         if (OpcaoPrincipal == "2")
-            return telaPaciente;
-        else if (OpcaoPrincipal == "3") 
+            return new TelaPaciente(repositorioPaciente);
+
+        else if (OpcaoPrincipal == "3")
             return new TelaMedicamento(repositorioMedicamento);
+
+        else if (OpcaoPrincipal == "4")
+            return new TelaFuncionario(repositorioFuncionario);
 
         return null;
     }

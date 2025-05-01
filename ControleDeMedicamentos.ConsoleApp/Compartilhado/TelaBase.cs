@@ -1,6 +1,6 @@
-﻿using ClubeDaLeitura.ConsoleApp.Util;
+﻿using ControleDeMedicamentos.ConsoleApp.Util;
 
-namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
+namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public abstract class TelaBase<T> where T : EntidadeBase<T>
 {
@@ -203,7 +203,7 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
         {
             ExibirCabecalho();
 
-            Console.WriteLine("Visualizando Amigos...");
+            Console.WriteLine($"Visualizando {nomeEntidade}...");
             Console.WriteLine("---------------------------------");
         }
 

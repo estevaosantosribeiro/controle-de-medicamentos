@@ -1,4 +1,4 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,4 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
@@ -6,6 +6,16 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
 {
     public TelaPaciente(IRepositorioPaciente repositorio) : base("Paciente", repositorio)
     {
+    }
+
+    public override void ExibirConteudoTabela(Paciente registro)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void ExibirTabela()
+    {
+        throw new NotImplementedException();
     }
 
     public override Paciente ObterDados(bool validacaoExtra)
@@ -22,10 +32,5 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
         Paciente paciente = new Paciente(nome, telefone, cartaoSus);
 
         return paciente;
-    }
-
-    public override void VisualizarRegistros(bool exibirTitulo)
-    {
-        throw new NotImplementedException();
     }
 }

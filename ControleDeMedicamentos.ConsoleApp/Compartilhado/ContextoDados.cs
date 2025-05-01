@@ -1,17 +1,18 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
-using ClubeDaLeitura.ConsoleApp.Util;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 
-namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
+namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public class ContextoDados
 {
     // Listas
     public List<Medicamento> Medicamentos { get; set; }
     public List<Paciente> Pacientes { get; set; }
-    
+    public List<Funcionario> Funcionarios { get; set; }
+
     private string pastaRaiz = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "AcademiaProgramador2025");
     private string arquivoArmazenamento = "dados.json";
@@ -22,6 +23,7 @@ public class ContextoDados
         // Criar Listas
         Medicamentos = new List<Medicamento>();
         Pacientes = new List<Paciente>();
+        Funcionarios = new List<Funcionario>();
     }
 
     public ContextoDados(bool carregarDados) : this()
@@ -69,7 +71,11 @@ public class ContextoDados
         ContextoDados contextoArmazenado = JsonSerializer.Deserialize<ContextoDados>(json, jsonOptions)!;
 
         if (contextoArmazenado == null) return;
+        
         // Carregar listas
+        
+        Pacientes = contextoArmazenado.Pacientes;
         Medicamentos = contextoArmazenado.Medicamentos;
+        Funcionarios = contextoArmazenado.Funcionarios;
     }
 }

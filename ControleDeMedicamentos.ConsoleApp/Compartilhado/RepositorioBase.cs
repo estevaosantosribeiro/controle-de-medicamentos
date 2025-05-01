@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
+namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public abstract class RepositorioBase<T> where T : EntidadeBase<T>
 {
