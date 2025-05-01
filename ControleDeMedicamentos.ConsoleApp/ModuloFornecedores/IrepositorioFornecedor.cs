@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 {
-   public class RepositorioFornecedoes
+  public  interface IrepositorioFornecedor : IRepositorio<Fornecedor>
     {
+
+
+
     }
 }
