@@ -26,6 +26,6 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
 
     public override void VisualizarRegistros(bool exibirTitulo)
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException(); 
     }
 }
