@@ -1,10 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
-using ClubeDaLeitura.ConsoleApp.Util;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
-namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
+namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public class ContextoDados
 {

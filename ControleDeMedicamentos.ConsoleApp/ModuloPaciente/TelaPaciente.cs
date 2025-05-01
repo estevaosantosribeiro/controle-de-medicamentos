@@ -1,5 +1,4 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using Microsoft.Win32;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 

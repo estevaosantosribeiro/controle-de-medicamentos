@@ -1,6 +1,6 @@
-﻿using ClubeDaLeitura.ConsoleApp.Util;
+﻿using ControleDeMedicamentos.ConsoleApp.Util;
 
-namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
+namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public abstract class TelaBase<T> where T : EntidadeBase<T>
 {

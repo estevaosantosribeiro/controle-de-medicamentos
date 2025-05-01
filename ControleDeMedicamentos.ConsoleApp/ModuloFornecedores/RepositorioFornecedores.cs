@@ -1,10 +1,4 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 {
@@ -12,8 +6,6 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
     {
         public RepositorioFornecedores(ContextoDados contexto) : base(contexto)
         {
-
-
         }
 
         protected override List<Fornecedor> ObterRegistros()

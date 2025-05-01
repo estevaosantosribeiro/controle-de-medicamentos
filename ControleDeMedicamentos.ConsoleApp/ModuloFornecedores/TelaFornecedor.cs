@@ -1,10 +1,4 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 {
@@ -14,24 +8,28 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
         {
         }
 
+        public override void ExibirConteudoTabela(Fornecedor registro)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ExibirTabela()
+        {
+            throw new NotImplementedException();
+        }
+
         public override Fornecedor ObterDados(bool validacaoExtra)
         {
             Console.WriteLine("Informe o Nome");
-            string nome = Console.ReadLine();
+            string nome = Console.ReadLine()!;
             Console.WriteLine("Informe o Telefone");
-            string telefone = Console.ReadLine();
+            string telefone = Console.ReadLine()!;
             Console.WriteLine("Informe o Cnpj");
-            string cnpj = Console.ReadLine();
+            string cnpj = Console.ReadLine()!;
 
             Fornecedor fornecedor = new Fornecedor(nome, telefone, cnpj);
 
             return fornecedor;
-        }
-
-        public override void VisualizarRegistros(bool exibirTitulo)
-        {
-            Console.WriteLine("{0, -10} | {0, -10} | {0, -10}, {0, -10}");
-            
         }
     }
 }
