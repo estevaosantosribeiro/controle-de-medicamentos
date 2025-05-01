@@ -1,4 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+using Microsoft.Win32;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
@@ -6,6 +7,22 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
 {
     public TelaPaciente(IRepositorioPaciente repositorio) : base("Paciente", repositorio)
     {
+    }
+
+    public override void ExibirTabela()
+    {
+        Console.WriteLine(
+            "{0, -6} | {1, -20} | {2, -20} | {3, -30}",
+            "Id", "Nome", "Telefone", "Cartão do SUS"
+        );
+    }
+
+    public override void ExibirConteudoTabela(Paciente registro)
+    {
+        Console.WriteLine(
+            "{0, -6} | {1, -20} | {2, -20} | {3, -30}",
+            registro.Id, registro.Nome, registro.Telefone, registro.CartaoSUS
+        );
     }
 
     public override Paciente ObterDados(bool validacaoExtra)
@@ -22,10 +39,5 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
         Paciente paciente = new Paciente(nome, telefone, cartaoSus);
 
         return paciente;
-    }
-
-    public override void VisualizarRegistros(bool exibirTitulo)
-    {
-        throw new NotImplementedException();
     }
 }
