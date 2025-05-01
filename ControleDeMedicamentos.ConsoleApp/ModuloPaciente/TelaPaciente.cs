@@ -8,6 +8,16 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
     {
     }
 
+    public override void ExibirConteudoTabela(Paciente registro)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void ExibirTabela()
+    {
+        throw new NotImplementedException();
+    }
+
     public override Paciente ObterDados(bool validacaoExtra)
     {
         Console.Write("Digite o nome do paciente: ");
@@ -24,8 +34,5 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
         return paciente;
     }
 
-    public override void VisualizarRegistros(bool exibirTitulo)
-    {
-        throw new NotImplementedException();
-    }
+ 
 }

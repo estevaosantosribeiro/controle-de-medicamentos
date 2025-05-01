@@ -3,6 +3,7 @@ using System.Text.Json;
 using ClubeDaLeitura.ConsoleApp.Util;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
@@ -11,6 +12,8 @@ public class ContextoDados
     // Listas
     public List<Medicamento> Medicamentos { get; set; }
     public List<Paciente> Pacientes { get; set; }
+
+    public List<Fornecedor> fornecedor { get; set; }
     
     private string pastaRaiz = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "AcademiaProgramador2025");

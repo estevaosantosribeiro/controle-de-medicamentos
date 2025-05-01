@@ -2,9 +2,9 @@
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
-public class RepositorioBase : RepositorioBase<Paciente>, IRepositorioPaciente 
+public class RepositorioPacienteEmArquivo : RepositorioBase<Paciente>, IRepositorioPaciente 
 {
-    public RepositorioBase(ContextoDados contexto) : base(contexto)
+    public RepositorioPacienteEmArquivo(ContextoDados contexto) : base(contexto)
     {
     }
 

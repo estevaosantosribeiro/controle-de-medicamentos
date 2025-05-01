@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 {
-  public  interface IrepositorioFornecedor : IRepositorio<Fornecedor>
+  public  interface IRepositorioFornecedor : IRepositorio<Fornecedor>
     {
 
 

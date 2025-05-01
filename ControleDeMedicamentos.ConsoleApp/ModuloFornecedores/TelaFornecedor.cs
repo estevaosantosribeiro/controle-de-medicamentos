@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 {
-    class TelaFornecedor : TelaBase<Fornecedor>
+    class TelaFornecedor : TelaBase<Fornecedor> , ITelaCrud
     {
-        public TelaFornecedor(string nomeEntidade, IRepositorio<Fornecedor> repositorio) : base(nomeEntidade, repositorio)
+        public TelaFornecedor(IRepositorioFornecedor repositorio) : base("fornecedor", repositorio)
         {
+ 
+
         }
+     
+
 
         public override Fornecedor ObterDados(bool validacaoExtra)
         {
@@ -27,11 +31,18 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 
             return fornecedor;
         }
-
-        public override void VisualizarRegistros(bool exibirTitulo)
+        public override void ExibirTabela()
         {
-            Console.WriteLine("{0, -10} | {0, -10} | {0, -10}, {0, -10}");
-            
+            Console.WriteLine("{0,-10} | {1,-30} | {2,-20} | {3,-20} |" ,
+                "id","nome","telefone" ,"Cnpj"
+                );
         }
+
+        public override void ExibirConteudoTabela(Fornecedor fornecedor)
+        {
+            Console.WriteLine("{0,-10} | {1,-30} | {2,-20} | {3,-20} |"
+              , fornecedor.Id, fornecedor.Nome ,fornecedor.Telefone ,fornecedor.Cnpj );
+        }
+    
     }
 }

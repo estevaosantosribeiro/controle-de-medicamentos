@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 {
-    public class RepositorioFornecedores : RepositorioBase<Fornecedor>
+    public class RepositorioFornecedor : RepositorioBase<Fornecedor>, IRepositorioFornecedor
     {
-        public RepositorioFornecedores(ContextoDados contexto) : base(contexto)
+        public RepositorioFornecedor(ContextoDados contexto) : base(contexto)
         {
 
 
