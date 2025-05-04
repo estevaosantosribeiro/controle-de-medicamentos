@@ -1,4 +1,5 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoDeSaida;
 using ControleDeMedicamentos.ConsoleApp.Util;
 
 namespace ControleDeMedicamentos.ConsoleApp;
@@ -28,6 +29,16 @@ internal class Program
             while (deveRodar)
             {
                 string opcaoEscolhida = telaSelecionada.ApresentarMenu();
+
+                if (telaSelecionada is TelaRequisicaoDeSaida)
+                {
+                    if (opcaoEscolhida == "5")
+                    {
+                        TelaRequisicaoDeSaida telaRequisicaoDeSaida = (TelaRequisicaoDeSaida)telaSelecionada;
+
+                        telaRequisicaoDeSaida.VisualizarRequisicoesPorPaciente();
+                    }
+                }
 
                 switch (opcaoEscolhida)
                 {

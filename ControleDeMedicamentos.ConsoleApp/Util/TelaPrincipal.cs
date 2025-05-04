@@ -5,6 +5,7 @@ using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
 using ControleDeMedicamentos.ConsoleApp.ModuloEntrada;
+using ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoDeSaida;
 
 namespace ControleDeMedicamentos.ConsoleApp.Util;
 
@@ -15,8 +16,9 @@ public class TelaPrincipal
     private RepositorioPaciente repositorioPaciente;
     private RepositorioFuncionario repositorioFuncionario;
     private RepositorioFornecedor repositorioFornecedor;
-    private RepositorioPrescricao RepositorioPrescricao;
+    private RepositorioPrescricao repositorioPrescricao;
     private RepositorioEntrada repositorioEntrada;
+    private RepositorioRequisicaoDeSaida repositorioRequisicaoDeSaida;
 
     public string OpcaoPrincipal { get; private set; }
 
@@ -27,8 +29,9 @@ public class TelaPrincipal
         repositorioPaciente = new RepositorioPaciente(contexto);
         repositorioFuncionario = new RepositorioFuncionario(contexto);
         repositorioFornecedor = new RepositorioFornecedor(contexto);
-        RepositorioPrescricao = new RepositorioPrescricao(contexto);
+        repositorioPrescricao = new RepositorioPrescricao(contexto);
         repositorioEntrada = new RepositorioEntrada(contexto);
+        repositorioRequisicaoDeSaida = new RepositorioRequisicaoDeSaida(contexto);
     }
 
 
@@ -46,6 +49,7 @@ public class TelaPrincipal
         Console.WriteLine("4 - Controle de Funcionários");
         Console.WriteLine("5 - Prescrições Médicas");
         Console.WriteLine("6 - Requisição de Entrada");
+        Console.WriteLine("7 - Requisição de Saída");
         Console.WriteLine("S - Sair do Programa");
         Console.WriteLine();
 
@@ -68,11 +72,14 @@ public class TelaPrincipal
             return new TelaFuncionario(repositorioFuncionario);
 
         else if (OpcaoPrincipal == "5")
-            return new TelaPrescricao(RepositorioPrescricao);
+            return new TelaPrescricao(repositorioPrescricao);
 
         else if (OpcaoPrincipal == "6")
             return new TelaEntrada(repositorioEntrada, repositorioFuncionario, repositorioMedicamento);
 
-            return null;
+        else if (OpcaoPrincipal == "7")
+            return new TelaRequisicaoDeSaida(repositorioRequisicaoDeSaida, repositorioPaciente, repositorioPrescricao, repositorioMedicamento);
+
+        return null;
     }
 }
