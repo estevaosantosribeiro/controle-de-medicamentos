@@ -35,7 +35,23 @@ public class RequisicaoDeSaida : EntidadeBase<RequisicaoDeSaida>
 
     public override string Validar()
     {
-        //throw new NotImplementedException();
-        return "";
+        string erros = "";
+
+        if (Data == default(DateTime))
+            erros += "O campo 'Data' é obrigatório e deve ser válido.\n";
+
+        if (Paciente == null)
+            erros += "O campo 'Paciente' é obrigatório.\n";
+
+        if (PrescricaoMedica == null)
+            erros += "O campo 'Prescrição Médica' é obrigatório.\n";
+
+        if (MedicamentoRequisitado == null)
+            erros += "O campo 'Medicamento' é obrigatório.\n";
+
+        if (MedicamentoRequisitado != null && MedicamentoRequisitado.Estoque <= 0)
+            erros += "Não há estoque disponível para o medicamento selecionado.\n";
+
+        return erros;
     }
 }
