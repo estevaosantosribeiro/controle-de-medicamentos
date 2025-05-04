@@ -1,4 +1,5 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 
@@ -7,13 +8,13 @@ public class Medicamento : EntidadeBase<Medicamento>
     public string Nome { get; set; }
     public string Descricao { get; set; }
     public int Estoque { get; set; }
-    public string Fornecedor { get; set; } // Alterar para classe quando implementada
+    public Fornecedor Fornecedor { get; set; } // Alterar para classe quando implementada
 
     public Medicamento()
     {
     }
 
-    public Medicamento(string nome, string descricao, int estoque, string fornecedor) : this()
+    public Medicamento(string nome, string descricao, int estoque, Fornecedor fornecedor) : this()
     {
         Nome = nome;
         Descricao = descricao;
@@ -46,7 +47,8 @@ public class Medicamento : EntidadeBase<Medicamento>
         if (Estoque < 0)
             erros += "O campo 'Estoque' deve conter um número positivo\n";
 
-        // Adicionar check fornecedor
+        if (Fornecedor == null)
+            erros += "O campo 'Fornecedor' precisa ser válido\n";
 
         return erros;
     }

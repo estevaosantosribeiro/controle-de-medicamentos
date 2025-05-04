@@ -58,7 +58,7 @@ public class TelaPrincipal
             return new TelaPaciente(repositorioPaciente);
 
         else if (OpcaoPrincipal == "3")
-            return new TelaMedicamento(repositorioMedicamento);
+            return new TelaMedicamento(repositorioMedicamento, repositorioFornecedor);
 
         else if (OpcaoPrincipal == "4")
             return new TelaFuncionario(repositorioFuncionario);
