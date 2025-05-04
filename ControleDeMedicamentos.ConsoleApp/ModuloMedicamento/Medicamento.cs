@@ -10,6 +10,8 @@ public class Medicamento : EntidadeBase<Medicamento>
     public int Estoque { get; set; }
     public Fornecedor Fornecedor { get; set; } // Alterar para classe quando implementada
 
+    private int ultimoEstoque;
+
     public Medicamento()
     {
     }
@@ -21,6 +23,16 @@ public class Medicamento : EntidadeBase<Medicamento>
         Estoque = estoque;
         Fornecedor = fornecedor;
     }
+
+
+    public void AtualizarEstoque(int valor)
+    {
+        Estoque -= ultimoEstoque;
+        Estoque += valor;
+        ultimoEstoque = valor;
+    }
+
+
 
     public override void AtualizarRegistro(Medicamento registroEditado)
     {

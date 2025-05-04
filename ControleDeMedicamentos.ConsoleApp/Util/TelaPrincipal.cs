@@ -4,6 +4,7 @@ using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
+using ControleDeMedicamentos.ConsoleApp.ModuloEntrada;
 
 namespace ControleDeMedicamentos.ConsoleApp.Util;
 
@@ -15,6 +16,7 @@ public class TelaPrincipal
     private RepositorioFuncionario repositorioFuncionario;
     private RepositorioFornecedor repositorioFornecedor;
     private RepositorioPrescricao RepositorioPrescricao;
+    private RepositorioEntrada repositorioEntrada;
 
     public string OpcaoPrincipal { get; private set; }
 
@@ -26,6 +28,7 @@ public class TelaPrincipal
         repositorioFuncionario = new RepositorioFuncionario(contexto);
         repositorioFornecedor = new RepositorioFornecedor(contexto);
         RepositorioPrescricao = new RepositorioPrescricao(contexto);
+        repositorioEntrada = new RepositorioEntrada(contexto);
     }
 
 
@@ -42,6 +45,7 @@ public class TelaPrincipal
         Console.WriteLine("3 - Controle de Medicamentos");
         Console.WriteLine("4 - Controle de Funcionários");
         Console.WriteLine("5 - Prescrições Médicas");
+        Console.WriteLine("6 - Requisição de Entrada");
         Console.WriteLine("S - Sair do Programa");
         Console.WriteLine();
 
@@ -66,6 +70,9 @@ public class TelaPrincipal
         else if (OpcaoPrincipal == "5")
             return new TelaPrescricao(RepositorioPrescricao);
 
-        return null;
+        else if (OpcaoPrincipal == "6")
+            return new TelaEntrada(repositorioEntrada, repositorioFuncionario, repositorioMedicamento);
+
+            return null;
     }
 }

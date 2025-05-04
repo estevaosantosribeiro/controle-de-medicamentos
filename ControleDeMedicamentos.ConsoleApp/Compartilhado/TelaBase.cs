@@ -79,11 +79,12 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
 
         if (!validacao) return;
 
+        ExtrasInserirEditar(novoRegistro);
+
         repositorio.CadastrarRegistro(novoRegistro);
 
         Notificador.ExibirMensagem("O registro foi concluído com sucesso!", ConsoleColor.Green);
     }
-
 
     public void EditarRegistro()
     {
@@ -136,12 +137,18 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
             return;
         }
 
+        ExtrasInserirEditar(registroEditado);
+
         Notificador.ExibirMensagem("O registro foi editado com sucesso!", ConsoleColor.Green);
     }
 
     public virtual bool ValidarInserirEditar(T registroEditado, int idRegistro = -1)
     {
         return true;
+    }
+
+    public virtual void ExtrasInserirEditar(T registro)
+    {
     }
 
     public void ExcluirRegistro()

@@ -4,6 +4,7 @@ using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
+using ControleDeMedicamentos.ConsoleApp.ModuloEntrada;
 
 namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
@@ -17,6 +18,8 @@ public class ContextoDados
     
     public List<Funcionario> Funcionarios { get; set; }
 
+    public List<Entrada> Entradas { get; set; }
+
     private string pastaRaiz = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "AcademiaProgramador2025");
     private string arquivoArmazenamento = "dados.json";
@@ -27,7 +30,9 @@ public class ContextoDados
         // Criar Listas
         Medicamentos = new List<Medicamento>();
         Pacientes = new List<Paciente>();
+        Fornecedor = new List<Fornecedor>();
         Funcionarios = new List<Funcionario>();
+        Entradas = new List<Entrada>();
     }
 
     public ContextoDados(bool carregarDados) : this()
@@ -82,5 +87,6 @@ public class ContextoDados
         Medicamentos = contextoArmazenado.Medicamentos;
         Funcionarios = contextoArmazenado.Funcionarios;
         Fornecedor = contextoArmazenado.Fornecedor;
+        Entradas = contextoArmazenado.Entradas;
     }
 }
