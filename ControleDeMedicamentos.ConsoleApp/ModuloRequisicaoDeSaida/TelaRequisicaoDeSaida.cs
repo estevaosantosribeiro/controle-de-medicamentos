@@ -2,6 +2,7 @@
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
+using ControleDeMedicamentos.ConsoleApp.Util;
 using Microsoft.Win32;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoDeSaida;
@@ -56,6 +57,11 @@ public class TelaRequisicaoDeSaida : TelaBase<RequisicaoDeSaida>, ITelaCrud
             "{0, -6} | {1, -20} | {2, -20} | {3, -30} | {4, -30}",
             "Id", "Data", "Paciente", "Prescrição Médica", "Medicamentos"
         );
+    }
+
+    public override void ExtrasInserirEditar(RequisicaoDeSaida registro)
+    {
+        registro.MedicamentoRequisitado.AtualizarEstoque(1, false);
     }
 
     public override RequisicaoDeSaida ObterDados(bool validacaoExtra)
