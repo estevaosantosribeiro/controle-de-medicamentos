@@ -8,26 +8,34 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
 
-    public  class Prescricao : EntidadeBase<Prescricao>
+public class Prescricao : EntidadeBase<Prescricao>
+{
+    public string CRM { get; set; }
+    public DateTime DATA { get; set; }
+    public Medicamento Medicamento { get; set; }
+    public string Dosagem { get; set; }
+
+    public string Periodo  { get; set; }
+
+
+    public Prescricao(string crm, Medicamento medicamento , string dosagem , string periodo)
     {
-        public string CRM { get; set; }
-        public DateTime DATA { get; set; }
-        public Medicamento Medicamento { get; set; }
-
-        public Prescricao(string crm, Medicamento medicamento)
-        {
-            CRM = crm;
-            Medicamento = medicamento;
+        CRM = crm;
+        Medicamento = medicamento;
+        DATA = DateTime.Now;
+        Dosagem = dosagem;
+        Periodo = periodo;
 
 
 
-        }
 
-        public override void AtualizarRegistro(Prescricao registroEditado)
-        {
-            registroEditado.CRM = registroEditado.CRM;
-            registroEditado.Medicamento = registroEditado.Medicamento;
-        }
+    }
+
+    public override void AtualizarRegistro(Prescricao registroEditado)
+    {
+        registroEditado.CRM = registroEditado.CRM;
+        registroEditado.Medicamento = registroEditado.Medicamento;
+    }
 
     public override string Validar()
     {
@@ -35,7 +43,7 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
         if (string.IsNullOrEmpty(CRM))
             erros += "O campo CRM é obrigatorio";
 
-    
+
 
         if (Medicamento.Id == null)
 
@@ -45,8 +53,8 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
         return erros;
     }
 
- 
+
 }
-    
-    
+
+
 
