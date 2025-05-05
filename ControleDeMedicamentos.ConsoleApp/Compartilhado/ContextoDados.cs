@@ -92,5 +92,6 @@ public class ContextoDados
         Funcionarios = contextoArmazenado.Funcionarios;
         Fornecedor = contextoArmazenado.Fornecedor;
         Entradas = contextoArmazenado.Entradas;
+        Saidas = contextoArmazenado.Saidas;
     }
 }
