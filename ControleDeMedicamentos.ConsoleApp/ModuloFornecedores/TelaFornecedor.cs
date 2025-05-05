@@ -1,4 +1,6 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
+using ControleDeMedicamentos.ConsoleApp.Util;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 {
@@ -6,20 +8,39 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
     {
         public TelaFornecedor(IRepositorioFornecedor repositorio) : base("fornecedor", repositorio)
         {
- 
+            repositorioFornecedor = repositorio;
 
         }
-     
 
+        IRepositorioFornecedor repositorioFornecedor;
+
+       
+
+        public override bool ValidarInserirEditar(Fornecedor registroEditado, int idRegistro = -1)
+        {
+            bool validacao = repositorioFornecedor.VerificarCNPJ( registroEditado.Cnpj, idRegistro);
+
+            if (!validacao)
+            {
+                Notificador.ExibirMensagem("Já existe um Fornecedor com este CNPJ", ConsoleColor.Red);
+                return false;
+            }
+
+            return true;
+        }
 
         public override Fornecedor ObterDados(bool validacaoExtra)
         {
             Console.WriteLine("Informe o Nome");
             string nome = Console.ReadLine()!;
+            Console.WriteLine();
             Console.WriteLine("Informe o Telefone");
+            Console.WriteLine();
             string telefone = Console.ReadLine()!;
             Console.WriteLine("Informe o Cnpj");
+            Console.WriteLine();
             string cnpj = Console.ReadLine()!;
+
 
             Fornecedor fornecedor = new Fornecedor(nome, telefone, cnpj);
 

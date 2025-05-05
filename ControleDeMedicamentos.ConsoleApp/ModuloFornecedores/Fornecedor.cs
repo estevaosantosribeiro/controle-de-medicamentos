@@ -1,4 +1,5 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using System.Text.RegularExpressions;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 {
@@ -34,8 +35,15 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
             if (string.IsNullOrEmpty(Telefone))
                 erros += "O campo telefone é obrigatorio !\n";
 
-            if (string.IsNullOrEmpty(Cnpj))
+            if (string.IsNullOrEmpty(Cnpj) )
                 erros += "O campo Cnpj é obrigatorio !\n";
+
+            if (Cnpj.Length > 14 || Cnpj.Length <14)
+                erros += "O campo CNPJ deve conter 14 caracteres";
+
+            if (!Regex.IsMatch(Telefone, @"^\(?\d{2}\)?\s?(9\d{4}|\d{4})-?\d{4}$"))
+                erros += "O campo 'Telefone' deve seguir o padrão () 0000-0000 ou (DDD) 00000-0000.\n";
+
 
             return erros;
         }

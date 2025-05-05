@@ -12,5 +12,21 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
         {
             return new List<Fornecedor>();
         }
+        public bool VerificarCNPJ(string cnpj, int id = -1)
+        {
+            List<Fornecedor> fornecedor = SelecionarRegistros();
+
+            foreach (var funcionario in fornecedor)
+            {
+                if (funcionario == null) continue;
+
+                if (funcionario.Id == id) continue;
+
+                if (funcionario.Cnpj == cnpj) return false;
+            }
+            return true;
+        }
+
+
     }
 }
