@@ -23,12 +23,22 @@ public class Medicamento : EntidadeBase<Medicamento>
     }
 
 
-    public void AtualizarEstoque(int valor, bool adicionando = true)
+    public bool AtualizarEstoque(int valor, bool adicionando = true)
     {
         if (adicionando)
+        {
             Estoque += valor;
+            return true;
+        }
         else
+        {
+            int calculo = Estoque - valor;
+            if (calculo < 0)
+                return false;
+
             Estoque -= valor;
+            return true;
+        }
     }
 
 
