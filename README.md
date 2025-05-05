@@ -76,7 +76,7 @@ por registrar, visualizar, editar e excluir dados de fornecedores, pacientes, me
 
 #### Clone o Repositório
 ```
-
+https://github.com/alquimia-do-programador/controle-de-medicamentos
 ```
 
 #### Navegue até a pasta raiz da solução
