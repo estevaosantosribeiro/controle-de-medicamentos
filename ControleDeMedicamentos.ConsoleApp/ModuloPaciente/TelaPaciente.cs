@@ -40,3 +40,5 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
         return paciente;
     }
 }
+
+
