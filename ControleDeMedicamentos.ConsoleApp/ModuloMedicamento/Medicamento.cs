@@ -64,7 +64,7 @@ public class Medicamento : EntidadeBase<Medicamento>
         else if (Descricao.Length < 5 || Descricao.Length > 255)
             erros += "O campo 'Descrição' deve conter entre 5-255 caracteres\n";
 
-        if (Estoque < 0)
+        if (Estoque <= 0)
             erros += "O campo 'Estoque' deve conter um número positivo\n";
 
         if (Fornecedor == null)
