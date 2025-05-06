@@ -6,22 +6,19 @@ using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleApp.ModuloEntrada;
 using ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoDeSaida;
+using ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
 
 namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public class ContextoDados
 {
-    // Listas
     public List<Medicamento> Medicamentos { get; set; }
     public List<Paciente> Pacientes { get; set; }
-
     public List<Fornecedor> Fornecedor { get; set; }
-    
     public List<Funcionario> Funcionarios { get; set; }
-
     public List<Entrada> Entradas { get; set; }
-
     public List<RequisicaoDeSaida> Saidas { get; set; }
+    public List<Prescricao> Prescricoes { get; set; }
 
     private string pastaRaiz = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "AcademiaProgramador2025");
@@ -30,13 +27,13 @@ public class ContextoDados
 
     public ContextoDados()
     {
-        // Criar Listas
         Medicamentos = new List<Medicamento>();
         Pacientes = new List<Paciente>();
         Fornecedor = new List<Fornecedor>();
         Funcionarios = new List<Funcionario>();
         Entradas = new List<Entrada>();
         Saidas = new List<RequisicaoDeSaida>();
+        Prescricoes = new List<Prescricao>();
     }
 
     public ContextoDados(bool carregarDados) : this()
@@ -85,13 +82,12 @@ public class ContextoDados
 
         if (contextoArmazenado == null) return;
         
-        // Carregar listas
-        
         Pacientes = contextoArmazenado.Pacientes;
         Medicamentos = contextoArmazenado.Medicamentos;
         Funcionarios = contextoArmazenado.Funcionarios;
         Fornecedor = contextoArmazenado.Fornecedor;
         Entradas = contextoArmazenado.Entradas;
         Saidas = contextoArmazenado.Saidas;
+        Prescricoes = contextoArmazenado.Prescricoes;
     }
 }

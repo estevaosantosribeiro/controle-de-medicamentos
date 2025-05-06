@@ -43,7 +43,7 @@ public class TelaPrincipal
         Console.WriteLine("---------------------------------");
         Console.WriteLine();
 
-        Console.WriteLine("1- Controle de Fornecedores");
+        Console.WriteLine("1 - Controle de Fornecedores");
         Console.WriteLine("2 - Controle de Pacientes");
         Console.WriteLine("3 - Controle de Medicamentos");
         Console.WriteLine("4 - Controle de Funcionários");

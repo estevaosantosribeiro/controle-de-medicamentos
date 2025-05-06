@@ -9,8 +9,11 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
         public string Telefone { get; set; }
         public string Cnpj { get; set; }
 
+        public Fornecedor()
+        {
+        }
 
-        public Fornecedor(string nome, string telefone, string cnpj)
+        public Fornecedor(string nome, string telefone, string cnpj) : this()
         {
             Nome = nome;
             Telefone = telefone;
