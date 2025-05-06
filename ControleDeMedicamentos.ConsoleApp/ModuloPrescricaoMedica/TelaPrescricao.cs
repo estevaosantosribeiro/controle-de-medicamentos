@@ -9,7 +9,7 @@ public class TelaPrescricao : TelaBase<Prescricao>, ITelaCrud
 {
     IRepositorioMedicamento repositorioMedicamento;
 
-    public TelaPrescricao(IRepossitorioPrescricao repositorio, IRepositorioMedicamento repositorioMedicamento) : base("Prescricão", repositorio)
+    public TelaPrescricao(IrepossitorioPrescricao repositorio, IRepositorioMedicamento repositorioMedicamento) : base("Prescricão", repositorio)
     {
        this.repositorioMedicamento = repositorioMedicamento;
     }

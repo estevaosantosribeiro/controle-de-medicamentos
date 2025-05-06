@@ -20,11 +20,11 @@ public class Paciente : EntidadeBase<Paciente>
         CartaoSUS = cartaoSUS;
     }
 
+
     public override void AtualizarRegistro(Paciente registroEditado)
     {
         Nome = registroEditado.Nome;
         Telefone = registroEditado.Telefone;
-        CartaoSUS = registroEditado.CartaoSUS;
     }
 
     public override string Validar()

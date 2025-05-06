@@ -1,11 +1,27 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.Util;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
 public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
 {
+    IRepositorioPaciente repositorioPaciente;
     public TelaPaciente(IRepositorioPaciente repositorio) : base("Paciente", repositorio)
     {
+        repositorioPaciente = repositorio;
+    }
+
+    public override bool ValidarInserirEditar(Paciente registroEditado, int idRegistro = -1)
+    {
+        bool validacao = repositorioPaciente.VerificarCartaoSUS(registroEditado.CartaoSUS, idRegistro);
+
+        if (!validacao)
+        {
+            Notificador.ExibirMensagem("Já existe um Paciente com este Cartão do SUS", ConsoleColor.Red);
+            return false;
+        }
+
+        return true;
     }
 
     public override void ExibirTabela()
@@ -32,12 +48,20 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaCrud
         Console.Write("Digite o telefone do paciente: ");
         string telefone = Console.ReadLine() ?? string.Empty;
 
-        Console.Write("Digite o número do cartão do SUS do paciente: ");
-        string cartaoSus = Console.ReadLine() ?? string.Empty;
+        string cartaoSus;
+        if (!validacaoExtra)
+        {
+            Console.Write("Digite o número do cartão do SUS do paciente: ");
+            cartaoSus = Console.ReadLine() ?? string.Empty;
 
-        Paciente paciente = new Paciente(nome, telefone, cartaoSus);
+            Paciente paciente = new Paciente(nome, telefone, cartaoSus);
 
-        return paciente;
+            return paciente;
+        }
+        
+        Paciente pacienteEditado = new Paciente(nome, telefone, "000000000000000");
+
+        return pacienteEditado;
     }
 }
 
