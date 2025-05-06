@@ -43,9 +43,10 @@ public class Prescricao : EntidadeBase<Prescricao>
         if (string.IsNullOrEmpty(CRM))
             erros += "O campo CRM é obrigatorio";
 
+        if (CRM.Length > 6 || CRM.Length <6)
+            erros += "O campo CRM deve conter 6 caracteres ";
 
-
-        if (Medicamento.Id == null)
+        if (Medicamento == null)
 
             erros += "Informe um medicamento";
 

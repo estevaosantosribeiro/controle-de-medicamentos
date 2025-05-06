@@ -41,21 +41,26 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica
 
         public override Prescricao ObterDados(bool validacaoExtra)
         {
-            Console.WriteLine("Informe o CRM");
+            Console.WriteLine("Informe um CRM Válido ");
             string crm  = Console.ReadLine()!;
+            Console.WriteLine();
 
-     
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Informe a medicação que deseja prescrever ");
+            Console.ResetColor();
+            Console.WriteLine();
+
             VisualizarMedicamentos();
             int idMedicamento = int.TryParse(Console.ReadLine(), out int valorMedicamento) ? valorMedicamento : -1;
 
             Medicamento medicamento = repositorioMedicamento.SelecionarRegistroPorId(idMedicamento);
-
-            Console.WriteLine("Informe a dosagem desse");
+            Console.WriteLine();
+            Console.WriteLine("Informe a dosagem do medicamento");
             string dosagem = Console.ReadLine();
-
+            Console.WriteLine();
             Console.WriteLine("informe o periodo ");
             string periodo = Console.ReadLine();
-
+            Console.WriteLine();
             if (medicamento == null)
             {
                 Notificador.ExibirMensagem($"Não existe Medicamento com o ID {idMedicamento}", ConsoleColor.Red);

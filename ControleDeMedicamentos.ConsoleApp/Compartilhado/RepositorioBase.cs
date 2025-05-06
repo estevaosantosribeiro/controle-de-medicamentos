@@ -12,7 +12,7 @@ public abstract class RepositorioBase<T> where T : EntidadeBase<T>
     protected RepositorioBase(ContextoDados contexto)
     {
         this.contexto = contexto;
-
+        
         registros = ObterRegistros();
 
         int maiorId = 0;
@@ -22,8 +22,8 @@ public abstract class RepositorioBase<T> where T : EntidadeBase<T>
             if (registro.Id > maiorId)
                 maiorId = registro.Id;
         }
-
         contadorIds = maiorId;
+       
     }
 
     protected abstract List<T> ObterRegistros();
