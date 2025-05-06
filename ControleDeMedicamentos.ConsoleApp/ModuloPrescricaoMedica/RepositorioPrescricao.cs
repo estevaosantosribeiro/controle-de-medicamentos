@@ -3,7 +3,7 @@ using ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 {
-    public class RepositorioPrescricao : RepositorioBase<Prescricao>, Irepossitorio_Prescricao
+    public class RepositorioPrescricao : RepositorioBase<Prescricao>, IrepossitorioPrescricao
     {
         public RepositorioPrescricao(ContextoDados contexto) : base(contexto)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica
 {
-    public interface Irepossitorio_Prescricao : IRepositorio<Prescricao>
+    public interface IrepossitorioPrescricao : IRepositorio<Prescricao>
     {
 
 

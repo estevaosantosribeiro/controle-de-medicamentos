@@ -32,6 +32,12 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
             if (string.IsNullOrEmpty(Nome))
                 erros += "O campo Nome é obrigatorio !\n";
 
+            else if (Nome.Length < 3)
+                erros += "O campo Nome não deve conter menos de 3 caracteres\n";
+
+            if (Nome.Length > 100)
+                erros += "O campo Nome não deve conter mais de 100 caracteres\n";
+
             if (string.IsNullOrEmpty(Telefone))
                 erros += "O campo telefone é obrigatorio !\n";
 
@@ -39,7 +45,7 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
                 erros += "O campo Cnpj é obrigatorio !\n";
 
             if (Cnpj.Length > 14 || Cnpj.Length <14)
-                erros += "O campo CNPJ deve conter 14 caracteres";
+                erros += "O campo CNPJ deve conter 14 caracteres\n";
 
             if (!Regex.IsMatch(Telefone, @"^\(?\d{2}\)?\s?(9\d{4}|\d{4})-?\d{4}$"))
                 erros += "O campo 'Telefone' deve seguir o padrão () 0000-0000 ou (DDD) 00000-0000.\n";

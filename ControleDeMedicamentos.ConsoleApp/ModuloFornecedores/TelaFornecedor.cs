@@ -27,15 +27,15 @@ public class TelaFornecedor : TelaBase<Fornecedor> , ITelaCrud
 
     public override Fornecedor ObterDados(bool validacaoExtra)
     {
-        Console.Write("Informe o Nome: ");
+        Console.Write("Informe o Nome : ");
         string nome = Console.ReadLine() ?? string.Empty;
-        
-        Console.Write("Informe o Telefone");
+        Console.WriteLine();
+        Console.Write("Informe o Telefone : ");
         string telefone = Console.ReadLine() ?? string.Empty;
-        
-        Console.Write("Informe o Cnpj:");
+        Console.WriteLine();
+        Console.Write("Informe o Cnpj : ");
         string cnpj = Console.ReadLine() ?? string.Empty;
-
+        Console.WriteLine();
         Fornecedor fornecedor = new Fornecedor(nome, telefone, cnpj);
 
         return fornecedor;
