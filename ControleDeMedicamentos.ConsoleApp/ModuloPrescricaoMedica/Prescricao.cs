@@ -1,10 +1,5 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
 
@@ -14,21 +9,19 @@ public class Prescricao : EntidadeBase<Prescricao>
     public DateTime DATA { get; set; }
     public Medicamento Medicamento { get; set; }
     public string Dosagem { get; set; }
-
     public string Periodo  { get; set; }
 
+    public Prescricao()
+    {
+    }
 
-    public Prescricao(string crm, Medicamento medicamento , string dosagem , string periodo)
+    public Prescricao(string crm, Medicamento medicamento , string dosagem , string periodo) : this()
     {
         CRM = crm;
         Medicamento = medicamento;
         DATA = DateTime.Now;
         Dosagem = dosagem;
         Periodo = periodo;
-
-
-
-
     }
 
     public override void AtualizarRegistro(Prescricao registroEditado)
@@ -40,6 +33,7 @@ public class Prescricao : EntidadeBase<Prescricao>
     public override string Validar()
     {
         string erros = "";
+
         if (string.IsNullOrEmpty(CRM))
             erros += "O campo CRM é obrigatorio";
 
@@ -47,14 +41,10 @@ public class Prescricao : EntidadeBase<Prescricao>
             erros += "O campo CRM deve conter 6 caracteres ";
 
         if (Medicamento == null)
-
             erros += "Informe um medicamento";
-
 
         return erros;
     }
-
-
 }
 
 

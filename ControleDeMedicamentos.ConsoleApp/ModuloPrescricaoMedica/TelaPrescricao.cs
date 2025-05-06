@@ -1,93 +1,84 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.Util;
 
-namespace ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica
+namespace ControleDeMedicamentos.ConsoleApp.ModuloPrescricaoMedica;
+
+public class TelaPrescricao : TelaBase<Prescricao>, ITelaCrud
 {
-    public class TelaPrescricao : TelaBase<Prescricao>, ITelaCrud
+    IRepositorioMedicamento repositorioMedicamento;
+
+    public TelaPrescricao(IRepossitorioPrescricao repositorio, IRepositorioMedicamento repositorioMedicamento) : base("Prescricão", repositorio)
     {
-        public TelaPrescricao(Irepossitorio_Prescricao repositorio, IRepositorioMedicamento repositorioMedicamento) : base("prescricão", repositorio)
+       this.repositorioMedicamento = repositorioMedicamento;
+    }
+
+    public void VisualizarMedicamentos()
+    {
+        Console.WriteLine($"Visualizando Medicamentos...");
+        Console.WriteLine("---------------------------------");
+
+        Console.WriteLine(
+            "{0, -10} | {1, -21} | {2, -21} | {3, -10} | {4, -15}",
+            "Id", "Nome", "Descrição", "Estoque", "Fornecedor"
+        );
+
+        List<Medicamento> medicamentos = repositorioMedicamento.SelecionarRegistros();
+
+        foreach (var medicamento in medicamentos)
         {
-           this.repositorioMedicamento = repositorioMedicamento;
-        }
-        IRepositorioMedicamento repositorioMedicamento;
+            if (medicamento == null) continue;
 
-
-
-        public void VisualizarMedicamentos()
-        {
-            Console.WriteLine($"Visualizando Medicamentos...");
-            Console.WriteLine("---------------------------------");
-
+            if (medicamento.Estoque <= 20) Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(
                 "{0, -10} | {1, -21} | {2, -21} | {3, -10} | {4, -15}",
-                "Id", "Nome", "Descrição", "Estoque", "Fornecedor"
+                medicamento.Id, medicamento.Nome, medicamento.Descricao, medicamento.Estoque, medicamento.Fornecedor.Nome
             );
-
-            List<Medicamento> medicamentos = repositorioMedicamento.SelecionarRegistros();
-
-            foreach (var medicamento in medicamentos)
-            {
-                if (medicamento == null) continue;
-
-                if (medicamento.Estoque <= 20) Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine(
-                    "{0, -10} | {1, -21} | {2, -21} | {3, -10} | {4, -15}",
-                    medicamento.Id, medicamento.Nome, medicamento.Descricao, medicamento.Estoque, medicamento.Fornecedor.Nome
-                );
-                Console.ResetColor();
-            }
-        }
-
-        public override Prescricao ObterDados(bool validacaoExtra)
-        {
-            Console.WriteLine("Informe um CRM Válido ");
-            string crm  = Console.ReadLine()!;
-            Console.WriteLine();
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Informe a medicação que deseja prescrever ");
             Console.ResetColor();
-            Console.WriteLine();
-
-            VisualizarMedicamentos();
-            int idMedicamento = int.TryParse(Console.ReadLine(), out int valorMedicamento) ? valorMedicamento : -1;
-
-            Medicamento medicamento = repositorioMedicamento.SelecionarRegistroPorId(idMedicamento);
-            Console.WriteLine();
-            Console.WriteLine("Informe a dosagem do medicamento");
-            string dosagem = Console.ReadLine();
-            Console.WriteLine();
-            Console.WriteLine("informe o periodo ");
-            string periodo = Console.ReadLine();
-            Console.WriteLine();
-            if (medicamento == null)
-            {
-                Notificador.ExibirMensagem($"Não existe Medicamento com o ID {idMedicamento}", ConsoleColor.Red);
-                return null!;
-            }
-
-
-
-            Prescricao prescricao = new Prescricao(crm, medicamento, dosagem, periodo);
-
-            return prescricao;
         }
-        public override void ExibirTabela()
+    }
+
+    public override Prescricao ObterDados(bool validacaoExtra)
+    {
+        Console.Write("Informe um CRM Válido: ");
+        string crm  = Console.ReadLine() ?? string.Empty;
+
+        VisualizarMedicamentos();
+        int idMedicamento = int.TryParse(Console.ReadLine(), out int valorMedicamento) ? valorMedicamento : -1;
+
+        Medicamento medicamento = repositorioMedicamento.SelecionarRegistroPorId(idMedicamento);
+
+        if (medicamento == null)
         {
-            Console.WriteLine("{0,-10} | {1,-15} | {2,-20} | {3,-20} | |{4, -10} | {5, -10}",
-                "id", "CRM", "Medicamento",   "Dosagem", "Periodo"  ,"DATA" );
+            Notificador.ExibirMensagem($"Não existe Medicamento com o ID {idMedicamento}", ConsoleColor.Red);
+            return null!;
         }
 
+        Console.Write("Informe a dosagem do medicamento: ");
+        string dosagem = Console.ReadLine() ?? string.Empty;
+        
+        Console.Write("Informe o periodo: ");
+        string periodo = Console.ReadLine() ?? string.Empty;
 
-        public override void ExibirConteudoTabela(Prescricao registro)
+        Prescricao prescricao = new Prescricao(crm, medicamento, dosagem, periodo);
+
+        return prescricao;
+    }
+    public override void ExibirTabela()
+    {
+        Console.WriteLine("{0,-10} | {1,-15} | {2,-20} | {3,-20} | |{4, -10} | {5, -10}",
+            "id", "CRM", "Medicamento",   "Dosagem", "Periodo"  ,"DATA" );
+    }
+
+
+    public override void ExibirConteudoTabela(Prescricao registro)
+    {
         {
-            {
-                Prescricao r = registro;
-                Console.WriteLine("{0,-10} | {1,-15} | {2,-20} | {3,-20} | |{4, -10} | {5, -10}",       
-                r.Id, r.CRM, r.Medicamento.Nome,r.Dosagem,r.Periodo, r.DATA.ToShortDateString()
-                    );
-            }
+            Prescricao r = registro;
+            Console.WriteLine("{0,-10} | {1,-15} | {2,-20} | {3,-20} | |{4, -10} | {5, -10}",       
+            r.Id, r.CRM, r.Medicamento.Nome,r.Dosagem,r.Periodo, r.DATA.ToShortDateString()
+                );
         }
     }
 }

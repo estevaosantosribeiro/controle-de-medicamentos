@@ -14,13 +14,13 @@ public class TelaRequisicaoDeSaida : TelaBase<RequisicaoDeSaida>, ITelaCrud
 
     IRepositorioRequisicaoDeSaida repositorioRequisicaoDeSaida { get; set; }
     IRepositorioPaciente repositorioPaciente { get; set; }
-    Irepossitorio_Prescricao repositorioPrescricao { get; set; }
+    IRepossitorioPrescricao repositorioPrescricao { get; set; }
     IRepositorioMedicamento repositorioMedicamento { get; set; }
 
     public TelaRequisicaoDeSaida(
         IRepositorioRequisicaoDeSaida repositorioRequisicaoDeSaida,
         IRepositorioPaciente repositorioPaciente,
-        Irepossitorio_Prescricao repositorioPrescricao,
+        IRepossitorioPrescricao repositorioPrescricao,
         IRepositorioMedicamento repositorioMedicamento
         ) : base("Requisição de Saída", repositorioRequisicaoDeSaida)
     {

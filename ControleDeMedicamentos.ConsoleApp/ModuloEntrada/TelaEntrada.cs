@@ -1,9 +1,7 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
-using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentos.ConsoleApp.Util;
-using Microsoft.Win32;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloEntrada;
 

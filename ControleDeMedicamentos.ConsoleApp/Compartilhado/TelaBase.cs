@@ -7,19 +7,12 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
 {
     protected string nomeEntidade;
     private IRepositorio<T> repositorio;
-    private string v;
-    private IRepositorioFuncionario repositorio1;
+
 
     protected TelaBase(string nomeEntidade, IRepositorio<T> repositorio)
     {
         this.nomeEntidade = nomeEntidade;
         this.repositorio = repositorio;
-    }
-
-    protected TelaBase(string v, IRepositorioFuncionario repositorio1)
-    {
-        this.v = v;
-        this.repositorio1 = repositorio1;
     }
 
     public void ExibirCabecalho()
@@ -55,7 +48,6 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
         Console.WriteLine($"4 - Visualizar {nomeEntidade}s");
         Console.WriteLine("S - Voltar");
     }
-
 
 
     public void CadastrarRegistro()

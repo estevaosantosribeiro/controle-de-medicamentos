@@ -14,7 +14,6 @@ public class RequisicaoDeSaida : EntidadeBase<RequisicaoDeSaida>
 
     public RequisicaoDeSaida()
     {
-
     }
 
     public RequisicaoDeSaida(DateTime data, Paciente paciente, Prescricao prescricaoMedica, Medicamento medicamentoRequisitado)
