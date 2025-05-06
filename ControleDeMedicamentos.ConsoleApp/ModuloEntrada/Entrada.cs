@@ -45,7 +45,7 @@ public class Entrada : EntidadeBase<Entrada>
         if (Funcionario == null)
             erros += "O campo 'Funcionário' deve ser válido\n";
 
-        if (Quantidade < 0)
+        if (Quantidade <= 0)
             erros += "O campo 'Quantidade' deve ser um número positivo\n";
 
 

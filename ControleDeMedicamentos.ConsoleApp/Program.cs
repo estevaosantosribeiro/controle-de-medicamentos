@@ -1,4 +1,5 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.ModuloEntrada;
 using ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoDeSaida;
 using ControleDeMedicamentos.ConsoleApp.Util;
 
@@ -38,6 +39,28 @@ internal class Program
 
                         telaRequisicaoDeSaida.VisualizarRequisicoesPorPaciente();
                     }
+                }
+
+                else if (telaSelecionada is TelaEntrada)
+                {
+                    TelaEntrada telaEntrada = (TelaEntrada)telaSelecionada;
+
+                    if (opcaoEscolhida == "1")
+                        telaEntrada.CadastrarRegistro();
+
+                    else if (opcaoEscolhida == "2")
+                        telaEntrada.ExcluirRegistro();
+
+                    else if (opcaoEscolhida == "3")
+                        telaEntrada.VisualizarRegistros(true);
+
+                    else if (opcaoEscolhida == "S")
+                        break;
+
+                    else
+                        Notificador.ExibirMensagem("Opção inválida!", ConsoleColor.Red);
+
+                    continue;
                 }
 
                 switch (opcaoEscolhida)

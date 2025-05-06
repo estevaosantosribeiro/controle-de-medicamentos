@@ -22,6 +22,14 @@ public class TelaEntrada : TelaBase<Entrada>, ITelaCrud
     }
 
 
+    public override void MostrarOpcoes()
+    {
+        Console.WriteLine($"1 - Cadastrar {nomeEntidade}");
+        Console.WriteLine($"2 - Excluir {nomeEntidade}");
+        Console.WriteLine($"3 - Visualizar {nomeEntidade}s");
+        Console.WriteLine("S - Voltar");
+    }
+
     public override void ExtrasInserirEditar(Entrada registro)
     {
         registro.Medicamento.AtualizarEstoque(registro.Quantidade);

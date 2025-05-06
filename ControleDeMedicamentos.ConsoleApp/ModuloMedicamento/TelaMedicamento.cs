@@ -1,5 +1,7 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.ModuloEntrada;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
+using ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoDeSaida;
 using ControleDeMedicamentos.ConsoleApp.Util;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
@@ -8,11 +10,48 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaCrud
 {
     IRepositorioMedicamento repositorioMedicamento;
     IRepositorioFornecedor repositorioFornecedor;
+    IRepositorioEntrada repositorioEntrada;
+    IRepositorioRequisicaoDeSaida repositorioSaida;
 
-    public TelaMedicamento(IRepositorioMedicamento repositorioMedicamento, IRepositorioFornecedor repositorioFornecedor) : base("Medicamento", repositorioMedicamento)
+    public TelaMedicamento(IRepositorioMedicamento repositorioMedicamento, 
+        IRepositorioFornecedor repositorioFornecedor,
+        IRepositorioEntrada repositorioEntrada,
+        IRepositorioRequisicaoDeSaida repositorioSaida) : base("Medicamento", repositorioMedicamento)
     {
         this.repositorioMedicamento = repositorioMedicamento;
         this.repositorioFornecedor = repositorioFornecedor;
+        this.repositorioEntrada = repositorioEntrada;
+        this.repositorioSaida = repositorioSaida;
+    }
+
+    public override bool ValidarExlcuir(Medicamento registro, int idRegistro)
+    {
+        List<Entrada> entradas = repositorioEntrada.SelecionarRegistros();
+        List<RequisicaoDeSaida> saidas = repositorioSaida.SelecionarRegistros();
+
+        foreach (var entrada in entradas)
+        {
+            if (entrada == null) continue;
+
+            if (entrada.Medicamento == registro)
+            {
+                Notificador.ExibirMensagem("Não foi possível excluir o medicamento o mesmo contém 'Requisição de Entrada'", ConsoleColor.Red);
+                return false;
+            }
+        }
+
+        foreach (var saida in saidas)
+        {
+            if (saida == null) continue;
+
+            if (saida.MedicamentoRequisitado == registro)
+            {
+                Notificador.ExibirMensagem("Não foi possível excluir o medicamento o mesmo contém 'Requisição de Saída'", ConsoleColor.Red);
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public override void ExibirConteudoTabela(Medicamento registro)
@@ -32,8 +71,6 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaCrud
             "Id", "Nome", "Descrição", "Estoque", "Fornecedor"
         );
     }
-
-
     public void VisualizarFornecedores()
     {
         Console.WriteLine($"Visualizando Fornecedores...");
@@ -53,7 +90,6 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaCrud
             fornecedor.Id, fornecedor.Nome, fornecedor.Telefone, fornecedor.Cnpj);
         }
     }
-
 
     public override Medicamento ObterDados(bool validacaoExtra)
     {
