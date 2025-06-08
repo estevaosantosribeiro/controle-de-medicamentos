@@ -9,75 +9,16 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-        while (true)
-        {
-            telaPrincipal.ApresentarMenu();
+        builder.Services.AddControllersWithViews();
 
-            ITelaCrud telaSelecionada = telaPrincipal.ObterTela();
+        WebApplication app = builder.Build();
 
-            if (telaSelecionada == null)
-            {
-                if (telaPrincipal.OpcaoPrincipal == "S")
-                    return;
+        app.UseStaticFiles();
+        app.UseRouting();
+        app.MapControllers();
 
-                Notificador.ExibirMensagem("Opção inválida!", ConsoleColor.Red);
-                continue;
-            }
-
-            bool deveRodar = true;
-            while (deveRodar)
-            {
-                string opcaoEscolhida = telaSelecionada.ApresentarMenu();
-
-                if (telaSelecionada is TelaRequisicaoDeSaida)
-                {
-                    if (opcaoEscolhida == "5")
-                    {
-                        TelaRequisicaoDeSaida telaRequisicaoDeSaida = (TelaRequisicaoDeSaida)telaSelecionada;
-
-                        telaRequisicaoDeSaida.VisualizarRequisicoesPorPaciente();
-                    }
-                }
-
-                else if (telaSelecionada is TelaEntrada)
-                {
-                    TelaEntrada telaEntrada = (TelaEntrada)telaSelecionada;
-
-                    if (opcaoEscolhida == "1")
-                        telaEntrada.CadastrarRegistro();
-
-                    else if (opcaoEscolhida == "2")
-                        telaEntrada.ExcluirRegistro();
-
-                    else if (opcaoEscolhida == "3")
-                        telaEntrada.VisualizarRegistros(true);
-
-                    else if (opcaoEscolhida == "S")
-                        break;
-
-                    else
-                        Notificador.ExibirMensagem("Opção inválida!", ConsoleColor.Red);
-
-                    continue;
-                }
-
-                switch (opcaoEscolhida)
-                {
-                    case "1": telaSelecionada.CadastrarRegistro(); break;
-
-                    case "2": telaSelecionada.EditarRegistro(); break;
-
-                    case "3": telaSelecionada.ExcluirRegistro(); break;
-
-                    case "4": telaSelecionada.VisualizarRegistros(true); break;
-
-                    case "S": deveRodar = false; break;
-
-                    default: Notificador.ExibirMensagem("Opção inválida!", ConsoleColor.Red); break;
-                }
-            }
-        }
+        app.Run();
     }
 }
