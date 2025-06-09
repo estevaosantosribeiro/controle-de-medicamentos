@@ -49,7 +49,7 @@ por registrar, visualizar, editar e excluir dados de fornecedores, pacientes, me
 
 * Atualização automática do estoque ao registrar saída.
 
-# Requisições de Entrada:
+## Requisições de Entrada:
 
 * Cadastro e visualização de requisições de entrada de medicamentos.
 
