@@ -1,7 +1,7 @@
 # Projeto Controle De Medicamentos
 
 
-![]( https://imgur.com/yL66Kse.gif )
+![](https://i.imgur.com/OYyV8iY.gif)
 ## Projeto
 
 Desenvolvido durante o curso Fullstack da [Academia do Programador](https://www.academiadoprogramador.net) 2025
