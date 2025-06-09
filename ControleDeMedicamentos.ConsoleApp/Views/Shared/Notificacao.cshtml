@@ -1,0 +1,14 @@
+﻿@using ControleDeMedicamentos.ConsoleApp.Model
+@model NotificacaoViewModel;
+
+@{
+	Layout = "_Layout";
+	ViewBag.Titulo = Model.Titulo;
+}
+
+<link href="~/notificacao.css" rel="stylesheet" />
+
+<div class="notificacao-container">
+	<p>@Model.Mensagem</p>
+	<a href="/" class="btn-voltar">Voltar</a>
+</div>

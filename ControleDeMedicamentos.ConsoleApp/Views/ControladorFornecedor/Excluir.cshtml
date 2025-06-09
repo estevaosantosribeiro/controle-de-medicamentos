@@ -1,0 +1,20 @@
+﻿@using ControleDeMedicamentos.ConsoleApp.Model
+@model ExcluirFornecedorViewModel;
+
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Exclusão de Fornecedor";
+}
+
+<link href="~/exclusao.css" rel="stylesheet" />
+
+<div class="formulario-exclusao">
+    <p>Você tem certeza que deseja excluir o registro "<strong>@Model.Nome</strong>"?</p>
+
+    <div class="botoes-exclusao">
+        <form action="/fornecedores/excluir/@Model.Id" method="post">
+            <button type="submit" class="btn-confirmar">Confirmar</button>
+        </form>
+        <a href="/fornecedores/visualizar" class="btn-cancelar">Cancelar</a>
+    </div>
+</div>

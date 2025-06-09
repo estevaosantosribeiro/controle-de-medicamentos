@@ -1,0 +1,36 @@
+﻿@using ControleDeMedicamentos.ConsoleApp.Model
+@model EditarFornecedorViewModel;
+
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Edição de Fornecedor";
+}
+
+<link href="~/formulario.css" rel="stylesheet" />
+
+<div class="form-header">
+    <a href="/fornecedores/visualizar" class="btn-voltar">
+        <i class="bi bi-arrow-left"></i> Voltar
+    </a>
+</div>
+
+<form action="/fornecedores/editar/@Model.Id" method="post" class="formulario-base">
+    <div class="form-group">
+        <label for="Nome">Nome do Fornecedor</label>
+        <input type="text" name="Nome" id="Nome" value="@Model.Nome" />
+    </div>
+
+    <div class="form-group">
+        <label for="Telefone">Telefone do Fornecedor</label>
+        <input type="text" name="Telefone" id="Telefone" value="@Model.Telefone" />
+    </div>
+
+    <div class="form-group">
+        <label for="CNPJ">CNPJ do Fornecedor</label>
+        <input type="text" name="CNPJ" id="CNPJ" value="@Model.CNPJ" />
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-salvar">Gravar</button>
+    </div>
+</form>

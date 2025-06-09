@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Página Inicial";
+}
+
+<link href="~/listas.css" rel="stylesheet" />
+
+<div class="lista-secao">
+    <a href="/fornecedores/visualizar" class="lista-item">
+        <img src="~/Imagens/placeholder.png" alt="Fornecedores" class="lista-imagem" />
+        <div class="lista-conteudo">
+            <h3 class="lista-titulo">Fornecedores</h3>
+            <p class="lista-descricao">Gerencie os Fornecedores</p>
+        </div>
+        <i class="bi bi-chevron-right lista-icone"></i>
+    </a>
+    <a href="/funcionarios/visualizar" class="lista-item">
+        <img src="~/Imagens/placeholder.png" alt="Funcionarios" class="lista-imagem" />
+        <div class="lista-conteudo">
+            <h3 class="lista-titulo">Funcionários</h3>
+            <p class="lista-descricao">Gerencie os Funcionários</p>
+        </div>
+        <i class="bi bi-chevron-right lista-icone"></i>
+    </a>
+</div>

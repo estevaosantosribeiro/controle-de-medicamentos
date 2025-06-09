@@ -7,11 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-    <Folder Include="Model\" />
-    <Folder Include="Views\Shared\" />
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
 </Project>

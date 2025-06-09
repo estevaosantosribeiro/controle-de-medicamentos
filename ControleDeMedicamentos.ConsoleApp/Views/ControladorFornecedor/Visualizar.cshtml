@@ -1,0 +1,52 @@
+﻿@using ControleDeMedicamentos.ConsoleApp.Model
+@model VisualizarFornecedoresViewModel;
+
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Visualização de Fornecedores";
+}
+
+<link href="~/cards.css" rel="stylesheet" />
+<link href="~/mensagem.css" rel="stylesheet" />
+
+<div class="cabecalho-tabela">
+    <h2>Fornecedores</h2>
+    <a href="/fornecedores/cadastrar" class="btn-adicionar">+ Adicionar Fornecedor</a>
+</div>
+
+@if (!Model.Registros.Any())
+{
+    <div class="mensagem-vazia">
+        Nenhum registro encontrado.
+    </div>
+}
+else
+{
+    <div class="grid-registros">
+        @foreach (var c in Model.Registros)
+        {
+            <div class="card-registro">
+                <div class="campo-registro">
+                    <strong>Nome:</strong>
+                    <span>@c.Nome</span>
+                </div>
+                <div class="campo-registro">
+                    <strong>Telefone:</strong>
+                    <span>@c.Telefone</span>
+                </div>
+                <div class="campo-registro">
+                    <strong>CNPJ:</strong>
+                    <span>@c.CNPJ</span>
+                </div>
+                <div class="acoes-registro">
+                    <a class="botoes-acoes" href="/fornecedores/editar/@c.Id" title="Editar">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+                    <a class="botoes-acoes" href="/fornecedores/excluir/@c.Id" title="Excluir">
+                        <i class="bi bi-trash"></i> Excluir
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+}
